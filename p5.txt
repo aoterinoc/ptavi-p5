@@ -77,23 +77,35 @@ con nuestra IP pública.
  Se hace uso de este protocolo para saber nuestra ip pública y el tipo de NAT en el
 que nos encontramos
 
-** ¿Estamos tras un NAT?
+** ¿Estamos tras un NAT? 
+Si porque la IP pública no es la IP de enlace.
 
 
 8. La trama 46 es la primera trama SIP. En un entorno como el de Internet, lo habitual es desconocer la dirección IP de la otra parte al realizar una llamada. Por eso, todo usuario registra su localización en un servidor Registrar. El Registrar guarda información sobre los usuarios en un servidor de localización que puede ser utilizado para localizar usuarios.
- ** ¿Qué dirección IP tiene el servidor Registrar?
+ 
+** ¿Qué dirección IP tiene el servidor Registrar?
+86.64.162.35
  ** ¿A qué puerto (del servidor Registrar) se envían los paquetes SIP?
+5060
  ** ¿Qué método SIP utiliza el UA para registrarse?
+REGISTER
  ** Además de REGISTER, ¿qué instrucciones SIP entiende el UA?
-
+Esto lo observamos en la cabecera Allow:
+INVITE,ACK,OPTIONS,BYE,CANCEL,NOTIFY,REFER,MESSAGE
 
 
 [Al terminar el ejercicio es recomendable hacer commit de los ficheros modificados]
 
 9. Fijémonos en las tramas siguientes a la número 46:
  ** ¿Se registra con éxito en el primer intento?
+No, observamos en el paquete 50 un código de error 401
+
  ** ¿Cómo sabemos si el registro se ha realizado correctamente o no?
+Un registro se realiza correctamente cuando el servidor nos conteste
+con un 200 OK
+
  ** ¿Podrías identificar las diferencias entre el primer intento y el segundo de registro? (fíjate en el tamaño de los paquetes y mira a qué se debe el cambio)
+
  ** ¿Cuánto es el valor del tiempo de expiración de la sesión? Indica las unidades.
 
 
