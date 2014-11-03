@@ -105,23 +105,52 @@ Un registro se realiza correctamente cuando el servidor nos conteste
 con un 200 OK
 
  ** ¿Podrías identificar las diferencias entre el primer intento y el segundo de registro? (fíjate en el tamaño de los paquetes y mira a qué se debe el cambio)
-
- ** ¿Cuánto es el valor del tiempo de expiración de la sesión? Indica las unidades.
-
+En el primer intento falta la cabecera:
+Authorization: Digest username="grex", realm="ekiga.net", nonce="45a439ee7438aaea43ae8c7c2382922187f86c8b", uri="sip:ekiga.net", algorithm=md5, response="5267d4e49d707d4443baefa913e8ff90"
+ 
+** ¿Cuánto es el valor del tiempo de expiración de la sesión? Indica las unidades.
+Expires : 3600s
 
 10. Una vez registrados, podemos efectuar una llamada. Vamos a probar con el servicio de eco de Ekiga que nos permite comprobar si nos hemos conectado correctamente. El servicio de eco tiene la dirección sip:500@ekiga.net. Veamos el INVITE de cerca.
  ** ¿Puede verse el nombre del que efectúa la llamada, así como su dirección SIP?
- ** ¿Qué es lo que contiene el cuerpo de la trama? ¿En qué formato/protocolo está?
- ** ¿Tiene éxito el primer intento? ¿Cómo lo sabes?
- ** ¿En qué se diferencia el segundo INVITE más abajo del primero? ¿A qué crees que se debe esto?
+El nombre es grex y la dirección SIP grex@ekiga.net
 
+** ¿Qué es lo que contiene el cuerpo de la trama? ¿En qué formato/protocolo está?
+En el cuerpo de la trama viene las características de la información que se va a 
+mandar(SDP).
+
+** ¿Tiene éxito el primer intento? ¿Cómo lo sabes?
+No tiene éxito,observamos que el servidor le contesta con un mensaje de error
+407 Proxy Authentication Requiered
+
+** ¿En qué se diferencia el segundo INVITE más abajo del primero? ¿A qué crees que se debe esto?
+El segundo INVITE contiene la cabecera:
+Proxy-Authorization: Digest username="grex", realm="ekiga.net", nonce="45a439f6ba5f681cd945fb7c40529fd1e0f28a81", uri="sip:500@ekiga.net", algorithm=md5, response="9a5627c14a8a433bd308d2ec54777240"
 
 11. Una vez conectado, estudia el intercambio de tramas.
+
  ** ¿Qué protocolo(s) se utiliza(n)? ¿Para qué sirven estos protocolos?
- ** ¿Cuál es el tamaño de paquete de los mismos?
- ** ¿Se utilizan bits de padding?
- ** ¿Cuál es la periodicidad de los paquetes que se envían?
- ** ¿Cuántos bits/segundo estamos enviando?
+ RTP,RTCP y H.261. 
+RTP : transporte de tráfico multimedia en internet. Dentro de RTP distinguimos entre
+audio y video(H261)
+RTCP : proporciona información de control sobre la calidad de la transmisión.
+
+
+** ¿Cuál es el tamaño de paquete de los mismos?
+RTP : 214 bytes
+RTCP : 102 y 43 bytes.
+
+** ¿Se utilizan bits de padding?
+- En RTP no se utilizan bits de padding "Padding:False"
+- RTCP : 
+
+** ¿Cuál es la periodicidad de los paquetes que se envían?
+RTP : 
+RTCP : 
+
+** ¿Cuántos bits/segundo estamos enviando?
+RTP : "64"
+RTCP : 
 
 
 
