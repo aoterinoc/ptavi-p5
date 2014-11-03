@@ -30,11 +30,13 @@ Si es consistente pues en una aplicación a tiempo real nos interesa que lleguen
 los paquetes lo mas rápido posibl aunque tengamos pérdidas.
 
  ** ¿Qué otros protocolos podemos ver en la jerarquía de protocolos?
-Los protocolos podemos verlos en "Protocol Hierarchy Statistcs" y estos son : IP,UDP,RTP,RTCP,TCP,HTTP
+Los protocolos podemos verlos en "Protocol Hierarchy Statistcs" y estos son:
+IP,UDP,RTP,RTCP,TCP,HTTP
 
 4. Observa por encima el flujo de tramas en el menú de Statistics en IO Graphs. La captura que estamos viendo incluye desde la inicialización (registro) de la aplicación hasta su finalización, con una llamada entremedias.
  ** Filtra por sip para conocer cuándo se envían paquetes SIP. ¿En qué segundos tienen lugar esos envíos?
- ** Y los paquetes con RTP, ¿cuándo se envían?
+Tienen lugar en el segundo 0.56-0.58s, 14-15s, 16-17s, 38-40s,55-56s aproximadamente
+ ** Y los paquetes con RTP, ¿cuándo se envían? 12-22s, 22-39s
 
 
 
