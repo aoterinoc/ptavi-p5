@@ -17,7 +17,7 @@ Se ha capturado una sesión SIP (archivo sip.cap.gz), que se puede abrir con Wir
  
 ** ¿Cuánto tiempo dura la captura?
 - Para observar cuando dura la captura nos fijamos en la columna "Time" del último
-y primer paquete,vemos que la duración de la captura es 36,614717.
+y vemos que la duración de la captura es 56.149345.
 
  ** ¿Qué IP tiene la máquina donde se ha efectuado la captura? ¿Se trata de una IP pública o de una IP privada? ¿Por qué lo sabes?
 
@@ -29,7 +29,7 @@ de la red privada.
 3. Antes de analizar las tramas, mira las estadísticas generales que aparecen en el menú de Statistics. En el apartado de jerarquía de protocolos (Protocol Hierarchy) se puede ver el porcentaje del tráfico correspondiente al protocolo TCP y UDP.
  ** ¿Cuál de los dos es mayor? ¿Es esto consistente con una aplicación que transmite en tiempo real?
 
-El porcentaje de tráfico correspondiente a UDP es mayor 
+El porcentaje de tráfico correspondiente a UDP es mayor (96.23%)
 Si es consistente pues en una aplicación a tiempo real nos interesa que lleguen
 los paquetes lo mas rápido posible aunque tengamos pérdidas.
 
@@ -51,13 +51,14 @@ IP,UDP,RTP,RTCP,TCP,HTTP
 
 5. Analiza las primeras cuatro tramas de la captura nada más arrancar Ekiga.
  ** ¿Qué servicio es el utilizado en estas tramas?
-DNS para traduccir el nombre de dominio a IP
+- DNS para traducir el nombre de dominio a IP
 
  ** ¿Cuál es la dirección IP del servidor de nombres del ordenador que ha lanzado Ekiga?
-192.168.1.34
 
- ** ¿Qué dirección IP (de ekiga.net) devuelve el servicio de nombres?
 80.58.61.250
+ 
+** ¿Qué dirección IP (de ekiga.net) devuelve el servicio de nombres?
+86.64.162.35
 
  ** ¿Por qué se pide también para 35.162.64.86.in-addr.arpa?
 No podemos saberlo, lo que si podemos ver es que nuestro servidor no acepta resolución inversa
@@ -137,7 +138,7 @@ Proxy-Authorization: Digest username="grex", realm="ekiga.net", nonce="45a439f6b
 11. Una vez conectado, estudia el intercambio de tramas.
 
  ** ¿Qué protocolo(s) se utiliza(n)? ¿Para qué sirven estos protocolos?
- RTP,RTCP y H.261. 
+ RTP Y RTCP 
 RTP : transporte de tráfico multimedia en internet. Dentro de RTP distinguimos entre
 audio y video(H261)
 RTCP : proporciona información de control sobre la calidad de la transmisión.
@@ -198,7 +199,8 @@ el jitter es 0 porque es el paquete desde el cual empezamos a mirar
 Hasta el paquete 246.
  
 ** ¿A qué se debe el cambio tan brusco del jitter?
-El cambio tan brusco del jitter se debe a una acción puntual
+El cambio tan brusco del jitter se debe a una acción puntual que no podemos conocer
+
  ** ¿Es comparable este cambio con el tiempo desde la recepción del paquete anterior? ¿Por qué?
 Si es comparable porque el valor del jitter depende del valor de la delta, si el valor de la delta crece bruscamente el valor del jitter también crecerá
  
