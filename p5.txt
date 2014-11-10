@@ -153,7 +153,7 @@ RTCP : 102 y 43 bytes.
 
 ** ¿Cuál es la periodicidad de los paquetes que se envían?
 RTP : 20ms
-RTCP : 5s
+RTCP : 2s
 
 ** ¿Cuántos bits/segundo estamos enviando?
 50 paquetes/s * 1280bits/paquete = 64000 bits/s
@@ -253,14 +253,16 @@ Si es necesario por lo siguiente:
 la comprobación de si existen firewall
 
  ** ¿Son diferentes el registro y la descripción de la sesión?
--El registro es igual pero el SDP cambia
+-El registro es igual pero el SDP cambia, el SDP de la conversación actual incluye
+descripción sobre el ancho de banda.
 
 18. Identifica las diferencias existentes entre esta conversación y la conversación anterior:
  ** ¿Cuántos flujos tenemos?
 - Observamos dos flujos de audio
  
 ** ¿Cuál es su periodicidad?
-- 20ms
+RTP : 20ms
+RTCP : 5s
 
  ** ¿Cuánto es el valor máximo del delta y los valores medios y máximo del jitter?
 
